@@ -3,8 +3,11 @@
 <head>
   <title>{{ app_title }}</title>
   {% if env == "DEV" %}<script src="http://localhost:35729/livereload.js?snipver=1"></script>{% endif %}
-  {% for vendor in vendors %}
+  {% for vendor in vendors.js %}
     <script src={{ vendor }}></script>
+  {% endfor %}
+  {% for vendor in vendors.css %}
+    <link rel="stylesheet" href={{ vendor }}>
   {% endfor %}
   <!-- vendors:css -->
   <!-- endinject -->
