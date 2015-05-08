@@ -8,8 +8,16 @@ var injects = function() {
   var source = gulp.src('public/index.template.html');
   var vendorsStream = gulp.src(includes.npm, { base: './node_modules' })
     .pipe(gulp.dest('./public/lib'));
-  return source.pipe(inject(vendorsStream, {relative: true, name:"vendors"}))
-    .pipe(inject(appStream, {relative: true}))
+  return source.pipe(rename("index.html"))
+    .pipe(inject(vendorsStream, {relative: true, name:"vendors"}))
+    .pipe(inject(appStream, { relative: true,
+      transform: function (filepath) {
+        if (filepath.slice(-4) === '.jsx') {
+          return '<script type="text/jsx" src="' + filepath + '"></script>';
+        }
+        // Use the default transform as fallback: 
+        return inject.transform.apply(inject.transform, arguments);
+      }}))
     .pipe(gulp.dest('views'));
 };
 
