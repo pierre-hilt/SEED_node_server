@@ -1,0 +1,20 @@
+<!-- index.html -->
+<html>
+<head>
+  <title>{{ app_title }}</title>
+  {% if env == "DEV" %}<script src="http://localhost:35729/livereload.js?snipver=1"></script>{% endif %}
+  {% for vendor in vendors %}
+    <script src={{ vendor }}></script>
+  {% endfor %}
+  <!-- vendors:css -->
+  <!-- endinject -->
+  <!-- inject:css -->
+  <!-- endinject -->
+</head>
+<body>
+  <!-- vendors:js -->
+  <!-- endinject -->
+  <!-- inject:js -->
+  <!-- endinject -->
+</body>
+</html>

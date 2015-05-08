@@ -1,0 +1,20 @@
+{
+  "name": "gulp_nodejs_seed",
+  "version": "0.0.0",
+  "description": "Gulp and Nodejs seed",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-inject": "^1.2.0",
+    "gulp-jshint": "^1.10.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-nodemon": "^2.0.2",
+    "gulp-watch": "^4.2.4",
+    "require-dir": "^0.3.0"
+  }
+}
