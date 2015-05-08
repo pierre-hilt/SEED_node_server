@@ -1,6 +1,7 @@
 var livereload = require('gulp-livereload');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
+var rename = require("gulp-rename");
 
 gulp.task('livereload', ['build:dev'], function() {
   livereload.listen(35729, function() {
@@ -9,8 +10,7 @@ gulp.task('livereload', ['build:dev'], function() {
 });
 
 gulp.task('watch:livereload', ['livereload'], function() {
-  watch(['./public/**/*.*', './server/**/*.*'], {verbose:true}, function() {
-    console.log("reload browser");
-    livereload.reload();
+  watch(['./public/**/*.*', './server/**/*.*', "./views/**.*", "!public/*.html"], {verbose:true}, function() {
+      livereload.reload();
   });
 });

@@ -6,8 +6,8 @@ var rename = require("gulp-rename");
 var injectApp = function() {
   var appStream = gulp.src(includes.app, {read: false});
   var source = gulp.src('public/index.template.html');
-  return source.pipe(inject(appStream, {relative: true}))
-    .pipe(rename("index.html"))
+  return source.pipe(rename("index.html"))
+    .pipe(inject(appStream, {relative: true}))
     .pipe(gulp.dest('views'));
 };
 
@@ -29,9 +29,14 @@ gulp.task("watch:app", ["build:index"], function() {
   watch(includes.app, {verbose:true}, function(stream) {
     console.log(stream.event);
     if (stream.event == "add" || stream.event == "unlink") {
-      injectApp();
+      injectLib();
     }
   });
+  watch('public/index.template.html', {verbose:true}, function(stream) {
+    console.log(stream.event);
+    injectLib();
+  });
+
 });
 
 // build index.html
